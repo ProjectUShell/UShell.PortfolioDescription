@@ -10,7 +10,7 @@ export class TokenSourceDescription {
    * LOCAL_JWT_GENERATION
    * OAUTH_CIBA_CODEGRAND
    */
-  public issueMode: string = "RAW-INPUT";
+  public issueMode: "RAW-INPUT"|"HTTP-GET"|"LOCAL_BASICAUTH_GENERATION"|"LOCAL_JWT_GENERATION"|"OAUTH_CIBA_CODEGRAND" = "RAW-INPUT";
 
   /**
    * when using issue mode *HTTP-GET*, then it could be: ```"assets/demoAccessToken.txt"```
@@ -34,7 +34,7 @@ export class TokenSourceDescription {
    * "NEVER" | "OPT-IN" | "OPT-OUT" | "ALWAYS"
    * (default, if not provided: "OPT-IN")
    */
-  public localLogonNamePersistation?: string;
+  public localLogonNamePersistation?: "NEVER"|"OPT-IN"|"OPT-OUT"|"ALWAYS";
 
   /**
    * LOCAL_JWT_GENERATION
@@ -104,7 +104,15 @@ export class TokenSourceDescription {
    */
   public retrieveViaGet: boolean = false;
 
-
+  /**
+   * this can be set to true to inform about the fact, that the
+   * oauth-server will reject any logon within a iframe or is just not able
+   * to handle its session-cookies correctly.
+   * based on this, the ushell will skip the convenience of serving the logon
+   * page within an iframe (instead of this the user will need to click on a hyperlink) 
+   */
+  public authEndpointRejectsIframe: boolean = false;
+  
   // VALIDATION /////////////////////////////////////////////////////////////////////
 
   /**
@@ -113,7 +121,7 @@ export class TokenSourceDescription {
    *  OAUTH_INTROSPECTION_ENDPOINT
    *  GITHUB_VALIDATION_ENDPOINT
    */
-  public validationMode: string = "IMPLICIT_WHEN_USED";
+  public validationMode: "IMPLICIT_WHEN_USED"|"LOCAL_JWT_VALIDATION"|"OAUTH_INTROSPECTION_ENDPOINT"|"GITHUB_VALIDATION_ENDPOINT" = "IMPLICIT_WHEN_USED";
 
   /**
    * 
@@ -126,7 +134,7 @@ export class TokenSourceDescription {
   public jwtValidationKey?: string|null;
 
   /**
-   *  not completible to IMPLICIT_WHEN_USED
+   *  not compatible to IMPLICIT_WHEN_USED
    */
   public claimValidationIgnoresCasing: boolean = true;
 
@@ -238,47 +246,103 @@ export class CiDescription {
 
 }
 
+/**
+ * dynamic parameter object which
+ * optionally can contain a 'mapDynamic'-structure
+ */
+export interface IDynamicParamObject{
+
+  /**
+   * mapping-entries, requesting dynamically provided values to be mapped
+   * over properties on the current object 
+   */
+  mapDynamic?: IDynamicParamMappingEntry[];
+
+  [key: string]: any;
+
+}
+
+export interface IDynamicParamMappingEntry {
+
+  /**
+   * based on this [EPIC](https://github.com/ProjectUShell/UShell.Docs/blob/master/epics/mapDynamic-Approach.md)
+   * there can be the following:
+   *  factory://UUID
+   *  factory://UID64
+   *  factory://now
+   *  setting://GROUP.FIELD
+   *   commandArgs://FIELD[.PROP[...]]
+   *   unitOfWork://FIELD[.PROP[...]]
+   *   applicationScope://FIELD[.PROP[...]]
+   *   userInput://FIELD[.PROP[...]]
+   */
+   use:string;
+
+    /**
+   * the name of the target property on the paremter object,
+   * that should be overwritten
+   */ 
+   for:string;
+
+}
+
 export class ModuleDescription {
 
     public moduleUid: string|null = null;
     public moduleTitle: string|null = null;
     public moduleScopingKey: string|null = null;
 
+    public workspaces : WorkspaceDescription[] = [];
+
+    public usecases : UsecaseDescription[] = [];
+
+    /**
+     * assign's long living usecases (that should be permanently available) to workspaces 
+     */
+    public staticUsecaseAssignments : StaticUsecaseAssignment[] = [];
+
     public datasources : DatasourceDescription[] = [];
 
-    public workspaces : WorkspaceDescription[] = [];
-    public usecases : UsecaseDescription[] = [];
     public commands : CommandDescription[] = [];
 
 }
 
+
 export class DatasourceDescription {
     public datasourceUid: string = "";
     public providerClass: string = "";
-    public providerArguments: object = {};
+    public providerArguments: IDynamicParamObject = {};
     public entityName?: string = "";
 }
 
 export class UsecaseDescription {
-    public useCaseKey: string = "myUC";
+
+    public usecaseKey: string = "myUC";
     public title: string = "my UC";
     public singletonActionkey: string = "";
     public iconName: string = "";
+
+    /** class-name of an out-of-the-box widget or
+     *  a special url to address external hosted widgets
+     *  via 'WebComponent'-Standard or
+     *  via react 'federation'-framework'
+     */
     public widgetClass: string = "";
-    public unitOfWorkDefaults: object = {};
+
+    public unitOfWorkDefaults: IDynamicParamObject = {};
+
 }
 
-export class StaticUseCaseAssignment {
-    public useCaseKey: string = "";
+export class StaticUsecaseAssignment {
+    public usecaseKey: string = "";
     public targetWorkspaceKey: string = "";
-    public initUnitOfWork?: object;
+    public initUnitOfWork?: IDynamicParamObject;
 }
 
 export class WorkspaceDescription {
     public workspaceKey: string = "";
     public workspaceTitle: string = "";
     public iconName?: string;
-    //public defaultStaticUseCaseKeys: string[] = [];
     public isSidebar: boolean = false;
 }
 
@@ -290,7 +354,7 @@ export class CommandDescription {
     public label: string = "";
 
     //"primary|secondary|success|info|warning|help|danger",
-    public semantic: string = "primary";
+    public semantic: "primary"|"secondary"|"success"|"info"|"warning"|"help"|"danger" = "primary";
 
     public description?: string;
 
@@ -307,7 +371,7 @@ export class CommandDescription {
     public targetWorkspacePath?: string;
 
     //":{ "idToEdit": "{selectedId} (PropAmQuellUc), für alle anderen vom widget geforderten args geht ein modaler dialog auf"},
-    public initUnitOfWork?: object;
+    public initUnitOfWork?: IDynamicParamObject;
 
     //ENABLED!
     public requiredRuntimeTagsForAvailability?: string[];
@@ -325,7 +389,7 @@ export class CommandDescription {
     public locationPriority?: number = 100;
 
     //if not set, than the global primary application menu is addressed",
-    public menuOwnerUseCaseKey?: string;
+    public menuOwnerUsecaseKey?: string;
 
     /** empty is not allowed (null or '' will automatically replaced to '...' (the misc-menu))
      *  additional to that where are the following magic-values for wellknown othe menüs:
@@ -333,9 +397,7 @@ export class CommandDescription {
      */
     public menuFolder: string = "";
 
-    /** ":"start-usecase     nur für dynmische!!!!, weil statische sind immer in einem workpace oder enderen UC drin",
-     */
-    public commandType: string = "";
+    public commandType: "activate-workspace"|"start-usecase"|"usecase-action"|"set-runtime-tag"|"navigate" = "activate-workspace";
 
      // For commandType=="set-runtime-tag" ##################################
 
@@ -354,7 +416,7 @@ export class CommandDescription {
     // For commandType=="usecase-action" ##################################
     public actionName?: string;
 
-       // "useCaseArgumentMapping":{ "idToEdit": "selectedId (PropAmQuellUc), für alle anderen vom widget geforderten args geht ein modaler dialog auf"},
+       // "usecaseArgumentMapping":{ "idToEdit": "selectedId (PropAmQuellUc), für alle anderen vom widget geforderten args geht ein modaler dialog auf"},
 
 
 }
