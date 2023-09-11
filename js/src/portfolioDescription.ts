@@ -1,4 +1,4 @@
-export class TokenSourceDescription {
+export class AuthTokenConfig {
 
   // ISSUEING /////////////////////////////////////////////////////////////////////
 
@@ -134,6 +134,11 @@ export class TokenSourceDescription {
   public jwtValidationKey?: string|null;
 
   /**
+   * LOCAL_JWT_VALIDATION
+   */
+  public jwtAlg: string|null;
+  
+  /**
    *  not compatible to IMPLICIT_WHEN_USED
    */
   public claimValidationIgnoresCasing: boolean = true;
@@ -155,7 +160,7 @@ export class TokenSourceDescription {
   // CLAIMS /////////////////////////////////////////////////////////////////////
 
   /**
-   * Claims, used for local JWT issuing and/or token validation.
+   * Claims, used for JWT self issuing (local only) and/or token validation (local or endpoint-based).
    * Sample:
    * ```{ "sub":"user-%logonName%", "aud": "CompanyX", "scope":"foo bar:%tenant% baz" }```
    */
@@ -174,7 +179,7 @@ export class PortfolioDescription {
    */
   public primaryUiTokenSourceUid: string = "00000000-0000-0000-0000-000000000000";
 
-  public tokenSources: { [tokenSourceUid:string]: TokenSourceDescription}|null = {};
+  public authTokenConfigs: { [tokenSourceUid:string]: AuthTokenConfig}|null = {};
 
   /**
    * The fixpoint when resolving a relative URL provided for this value is the
