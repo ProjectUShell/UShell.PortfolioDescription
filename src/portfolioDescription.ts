@@ -303,6 +303,8 @@ export class ModuleDescription {
 
     public datasources : DatasourceDescription[] = [];
 
+    public datastores : DatastoreDescription[] = [];
+
     public commands : CommandDescription[] = [];
 
 }
@@ -313,6 +315,12 @@ export class DatasourceDescription {
     public providerClass: string = "";
     public providerArguments: IDynamicParamObject = {};
     public entityName?: string = "";
+}
+
+export class DatastoreDescription {
+  public key: string = ''
+  public providerClass: 'localstore' | 'fuse' = 'fuse'
+  public providerArguments?: any
 }
 
 export class UsecaseDescription {
