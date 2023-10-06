@@ -136,7 +136,7 @@ export class AuthTokenConfig {
   /**
    * LOCAL_JWT_VALIDATION
    */
-  public jwtAlg: string|null;
+  public jwtAlg: string|null = null;
   
   /**
    *  not compatible to IMPLICIT_WHEN_USED

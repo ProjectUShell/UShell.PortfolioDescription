@@ -7,10 +7,7 @@ This files contains a version history including all changes relevant for semanti
 
 
 ## Upcoming Changes
-
-*(none)*
-
-
+* fix missing type initializer
 
 ## v 0.2.2
 released **2023-09-11**, including:
