@@ -8,7 +8,13 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* prepared .NET Solution
+*(none)*
+
+
+
+## v 0.2.4
+released **2023-11-10**, including:
+ - prepared .NET Solution
 
 
 
