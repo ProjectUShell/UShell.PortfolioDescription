@@ -247,3 +247,5 @@ ModelManifest.xml
 /(Vendor)/NuGet/
 lib/
 ushell-modulebase-*.tgz
+/dotnet/dist
+/dotnet/vendor/nuget
