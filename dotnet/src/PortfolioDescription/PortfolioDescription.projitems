@@ -9,6 +9,15 @@
     <Import_RootNamespace>System</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CommandDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DatasourceDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DatastoreDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDynamicParamMappingEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDynamicParamObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModuleDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PortfolioDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StaticUsecaseAssignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UsecaseDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkspaceDescription.cs" />
   </ItemGroup>
 </Project>
