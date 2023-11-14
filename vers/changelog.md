@@ -12,6 +12,12 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 0.2.5
+released **2023-11-13**, including:
+ - new revision without significant changes
+
+
+
 ## v 0.2.4
 released **2023-11-10**, including:
  - prepared .NET Solution
