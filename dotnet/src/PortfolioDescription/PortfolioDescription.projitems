@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IDynamicParamObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PortfolioDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortfolioEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StaticUsecaseAssignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UsecaseDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WorkspaceDescription.cs" />
