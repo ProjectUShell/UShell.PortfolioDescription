@@ -10,22 +10,22 @@ namespace UShell {
     /// <summary>
     /// Application Title
     /// </summary>
-    public string applicationTitle { get; set; } = "Web-Frontend";
+    public string ApplicationTitle { get; set; } = "Web-Frontend";
 
     /// <summary>
     /// the workspace, where the ushell will tread as landing location
     /// </summary>
-    public string landingWorkspaceName { get; set; } = "dashboard";
+    public string LandingWorkspaceName { get; set; } = "dashboard";
 
     /// <summary>
     /// '00000000-0000-0000-0000-000000000000' means DISABLED - NO LOGIN REQUIRED!!!
     /// </summary>
-    public string primaryUiTokenSourceUid { get; set; } = "00000000-0000-0000-0000-000000000000";
+    public string PrimaryUiTokenSourceUid { get; set; } = "00000000-0000-0000-0000-000000000000";
 
     /// <summary>
     /// OAuth configuration structure
     /// </summary>
-    public Dictionary<string, AuthTokenConfig> authTokenConfigs { get; set; } = null;
+    public Dictionary<string, AuthTokenConfig> AuthTokenConfigs { get; set; } = null;
 
     /// <summary>
     /// The fixpoint when resolving a relative URL provided for this value is the

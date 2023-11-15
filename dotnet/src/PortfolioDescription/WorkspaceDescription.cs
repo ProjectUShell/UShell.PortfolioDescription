@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace System {
+﻿namespace System {
   public class WorkspaceDescription {
-    public string  workspaceKey= "";
-    public string  workspaceTitle= "";
-    public string iconName;
-    public bool  isSidebar= false;
+    public string WorkspaceKey { get; set; } = "";
+    public string WorkspaceTitle { get; set; } = "";
+    public string IconName { get; set; }
+    public bool IsSidebar { get; set; } = false;
   }
 }

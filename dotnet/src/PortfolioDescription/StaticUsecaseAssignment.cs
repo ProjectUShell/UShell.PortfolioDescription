@@ -1,7 +1,7 @@
 ﻿namespace System {
   public class StaticUsecaseAssignment {
-    public string usecaseKey = "";
-    public string targetWorkspaceKey = "";
-    public IDynamicParamObject initUnitOfWork;
+    public string UsecaseKey { get; set; } = "";
+    public string TargetWorkspaceKey { get; set; } = "";
+    public IDynamicParamObject InitUnitOfWork { get; set; }
   }
 }

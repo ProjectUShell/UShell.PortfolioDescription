@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace System {
   public class ModuleDescription {
-    public string moduleUid = null;
-    public string moduleTitle = null;
-    public string moduleScopingKey = null;
-    public List<WorkspaceDescription> workspaces = new List<WorkspaceDescription>();
-    public List<UsecaseDescription> usecases = new List<UsecaseDescription>();
-    public List<StaticUsecaseAssignment> staticUsecaseAssignments = new List<StaticUsecaseAssignment>();
-    public List<DatasourceDescription> datasources = new List<DatasourceDescription>();
-    public List<DatastoreDescription> datastores = new List<DatastoreDescription>();
-    public List<CommandDescription> commands = new List<CommandDescription>();
+    public string ModuleUid { get; set; }= null;
+    public string ModuleTitle { get; set; }= null;
+    public string ModuleScopingKey { get; set; } = null;
+    public List<WorkspaceDescription> Workspaces { get; set; }= new List<WorkspaceDescription>();
+    public List<UsecaseDescription> Usecases { get; set; }= new List<UsecaseDescription>();
+    public List<StaticUsecaseAssignment> StaticUsecaseAssignments { get; set; }= new List<StaticUsecaseAssignment>();
+    public List<DatasourceDescription> Datasources { get; set; }= new List<DatasourceDescription>();
+    public List<DatastoreDescription> Datastores { get; set; }= new List<DatastoreDescription>();
+    public List<CommandDescription> Commands { get; set; } = new List<CommandDescription>();
   }
 }
