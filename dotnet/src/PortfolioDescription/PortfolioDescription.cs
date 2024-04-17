@@ -22,6 +22,10 @@ namespace UShell {
     /// </summary>
     public string PrimaryUiTokenSourceUid { get; set; } = "00000000-0000-0000-0000-000000000000";
 
+    public AuthenticatedAccessDescription AuthenticatedAccess = new AuthenticatedAccessDescription();
+
+    public AnonymousAccessDescription AnonymouseAccess = new AnonymousAccessDescription();
+
     /// <summary>
     /// OAuth configuration structure
     /// </summary>
@@ -37,13 +41,13 @@ namespace UShell {
     /// The fixpoint when resolving a relative URL provided for this value is the
     /// (portfolio.json)-url where the current PortfolioDescription was loaded from.
     /// </summary>
-    public string LegalContactMdUrl  { get; set; } = null;
+    public string LegalContactMdUrl { get; set; } = null;
 
     /// <summary>
     /// The fixpoint when resolving a relative URL provided for this value is the
     /// (portfolio.json)-url where the current PortfolioDescription was loaded from.
     /// </summary>
-    public string UserAgreementMdUrl  { get; set; } = null;
+    public string UserAgreementMdUrl { get; set; } = null;
 
     /// <summary>
     /// The Version string is used when persisting the agreement state.
