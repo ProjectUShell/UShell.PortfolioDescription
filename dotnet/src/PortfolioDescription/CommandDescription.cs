@@ -1,6 +1,6 @@
 ﻿namespace System {
   public class CommandDescription {
-    public string uniqueCommandKey = "";
+    public string UniqueCommandKey { get; set; } = "";
 
     public string Label { get; set; } = "";
 
