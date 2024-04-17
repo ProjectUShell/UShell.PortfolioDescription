@@ -22,9 +22,9 @@ namespace UShell {
     /// </summary>
     public string PrimaryUiTokenSourceUid { get; set; } = "00000000-0000-0000-0000-000000000000";
 
-    public AuthenticatedAccessDescription AuthenticatedAccess = new AuthenticatedAccessDescription();
+    public AuthenticatedAccessDescription AuthenticatedAccess { get; set; } = new AuthenticatedAccessDescription();
 
-    public AnonymousAccessDescription AnonymouseAccess = new AnonymousAccessDescription();
+    public AnonymousAccessDescription AnonymouseAccess { get; set; } = new AnonymousAccessDescription();
 
     /// <summary>
     /// OAuth configuration structure

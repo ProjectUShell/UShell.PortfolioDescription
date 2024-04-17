@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace System {
 
   public class AuthenticatedAccessDescription {
-    public string[] PrimaryUiTokenSources;
-    public Dictionary<string, string> RuntimeTagsFromTokenScope = new Dictionary<string, string>();
+    public string[] PrimaryUiTokenSources { get; set; }
+    public Dictionary<string, string> RuntimeTagsFromTokenScope { get; set; } = new Dictionary<string, string>();
   }
 }
