@@ -1,4 +1,6 @@
-﻿namespace System {
+﻿
+namespace UShell {
+
   public class CommandDescription {
     public string UniqueCommandKey { get; set; } = "";
 
@@ -69,5 +71,7 @@
 
     // For commandType=="usecase-action" ##################################
     public string ActionName { get; set; }
+
   }
+
 }

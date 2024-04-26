@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace System {
+namespace UShell {
+
   public class ModuleDescription {
+
     public string ModuleUid { get; set; }= null;
     public string ModuleTitle { get; set; }= null;
     public string ModuleScopingKey { get; set; } = null;
@@ -11,5 +13,7 @@ namespace System {
     public List<DatasourceDescription> Datasources { get; set; }= new List<DatasourceDescription>();
     public List<DatastoreDescription> Datastores { get; set; }= new List<DatastoreDescription>();
     public List<CommandDescription> Commands { get; set; } = new List<CommandDescription>();
+
   }
+
 }

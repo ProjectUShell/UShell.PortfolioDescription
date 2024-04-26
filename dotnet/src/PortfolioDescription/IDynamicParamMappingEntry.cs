@@ -1,6 +1,9 @@
-﻿namespace System {
+﻿
+namespace UShell {
+
   public class IDynamicParamMappingEntry {
-    /**
+
+   /**
    * based on this [EPIC](https://github.com/ProjectUShell/UShell.Docs/blob/master/epics/mapDynamic-Approach.md)
    * there can be the following:
    *  factory://UUID
@@ -19,5 +22,7 @@
    * that should be overwritten
    */
     public string For { get; set; }
+
   }
+
 }

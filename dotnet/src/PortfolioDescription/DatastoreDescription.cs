@@ -1,4 +1,6 @@
-﻿namespace System {
+﻿
+namespace UShell {
+
   public class DatastoreDescription {
     public string Key { get; set; } = "";
 
@@ -8,4 +10,5 @@
     public string ProviderClass { get; set; } = "fuse";
     public object ProviderArguments { get; set; }
   }
+
 }

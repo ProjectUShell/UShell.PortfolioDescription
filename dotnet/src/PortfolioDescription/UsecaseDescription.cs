@@ -1,4 +1,6 @@
-﻿namespace System {
+﻿
+namespace UShell {
+
   public class UsecaseDescription {
 
     public string UsecaseKey { get; set; } = "myUC";
@@ -16,4 +18,5 @@
     public IDynamicParamObject UnitOfWorkDefaults { get; set; } = null;
 
   }
+
 }
