@@ -1,13 +1,13 @@
 {
-  "currentVersion": "0.2.12",
-  "currentVersionWithSuffix": "0.2.12",
+  "currentVersion": "0.3.0",
+  "currentVersionWithSuffix": "0.3.0",
   "releaseType": "official",
-  "previousVersion": "0.2.11",
-  "changeGrade": "patch",
+  "previousVersion": "0.2.12",
+  "changeGrade": "minor",
   "currentMajor": 0,
-  "currentMinor": 2,
-  "currentPatch": 12,
-  "versionDateInfo": "2024-04-17",
-  "versionTimeInfo": "19:04:30",
-  "versionNotes": "- new revision without significant changes\n"
+  "currentMinor": 3,
+  "currentPatch": 0,
+  "versionDateInfo": "2024-04-26",
+  "versionTimeInfo": "14:12:24",
+  "versionNotes": "- new Feature: added Controller-Base for PortfolioHosting\n"
 }

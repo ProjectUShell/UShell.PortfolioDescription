@@ -8,7 +8,13 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* **new Feature**: added Controller-Base for PortfolioHosting
+*(none)*
+
+
+
+## v 0.3.0
+released **2024-04-26**, including:
+ - **new Feature**: added Controller-Base for PortfolioHosting
 
 
 
