@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IDynamicParamObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPortfolioService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortfolioDeclaration\FluentBuildupExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PortfolioDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PortfolioEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StaticUsecaseAssignment.cs" />

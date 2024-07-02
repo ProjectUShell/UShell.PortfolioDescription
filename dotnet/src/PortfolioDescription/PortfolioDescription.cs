@@ -24,7 +24,7 @@ namespace UShell {
 
     public AuthenticatedAccessDescription AuthenticatedAccess { get; set; } = new AuthenticatedAccessDescription();
 
-    public AnonymousAccessDescription AnonymouseAccess { get; set; } = new AnonymousAccessDescription();
+    public AnonymousAccessDescription AnonymousAccess { get; set; } = new AnonymousAccessDescription();
 
     /// <summary>
     /// OAuth configuration structure
@@ -67,16 +67,16 @@ namespace UShell {
     public string[] IntialRuntimeTags { get; set; } = null;
 
     /// <summary>
-    /// Can be used to couple runtimeTags with entries the of the 'scope' claim from the *primaryUiToken*.
-    /// For example: ``` {"showPowerFeatures": "LIC:PremiumSubscription"}```
-    /// </summary>
-    public Dictionary<string, string> RuntimeTagToTokenBinding { get; set; } = null;
-
-    /// <summary>
     /// The fixpoint when resolving relative URLs provided for this array is the
     /// (portfolio.json)-url where the current PortfolioDescription was loaded from.
     /// </summary>
     public string[] ModuleDescriptionUrls { get; set; } = new string[] { };
+
+    public static PortfolioDescription Build(string applicationTitle, Action<PortfolioDescription> customizingMethod = null) {
+      var instance = new PortfolioDescription { ApplicationTitle  = applicationTitle };
+      if(customizingMethod != null) customizingMethod.Invoke(instance);
+      return instance;
+    }
 
   }
 

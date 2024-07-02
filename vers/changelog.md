@@ -8,7 +8,9 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-*(none)*
+* Fixed Typo 'AnonymouseAccess'
+* added convenience for Fluent creation of PortfolioDesciptions (.net)
+* added code comment for 'runtimeTagsFromTokenScope'
 
 
 

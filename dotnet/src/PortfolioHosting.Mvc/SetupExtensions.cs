@@ -17,22 +17,29 @@ namespace UShell {
       SetupExtensions.AddControllerForUShellPortfolioService(extendee, portfolioService);
     }
 
+    public static void AddControllerForUShellPortfolioService(
+      this IServiceCollection extendee, IPortfolioService serviceInstance
+    ) {
+      extendee.AddSingleton<IPortfolioService>(serviceInstance);
+      SetupExtensions.AddControllerForUShellPortfolioService(extendee);
+    }
+
     /// <summary>
     /// PLEASE MAKE SURE: that youve added an IPortfolioService to the services di container by your own
     /// OR use the method overload with the additional argument to provide the instance direcectly...
     /// </summary>
     /// <param name="extendee"></param>
-    /// <param name="serviceInstance"></param>
-    public static void AddControllerForUShellPortfolioService(
-      this IServiceCollection extendee, IPortfolioService serviceInstance
-    ) {
-
-      extendee.AddSingleton<IPortfolioService>(serviceInstance);
-      SetupExtensions.AddControllerForUShellPortfolioService(extendee);
-    }
-
     public static void AddControllerForUShellPortfolioService(this IServiceCollection extendee) {
       IMvcBuilder builder = extendee.AddMvc();
+      builder.AddControllerForUShellPortfolioService();
+    }
+
+    /// <summary>
+    /// PLEASE MAKE SURE: that youve added an IPortfolioService to the services di container by your own
+    /// OR use the method overload with the additional argument to provide the instance direcectly...
+    /// </summary>
+    /// <param name="builder"></param>
+    public static void AddControllerForUShellPortfolioService(this IMvcBuilder builder) {
       var cfp = new UShellPortfolioFeatureProvider();
       builder.ConfigureApplicationPartManager(
         (apm) => apm.FeatureProviders.Add(cfp)

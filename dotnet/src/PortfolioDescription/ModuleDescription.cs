@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using System.Security.Cryptography;
 
 namespace UShell {
 
@@ -13,6 +16,12 @@ namespace UShell {
     public List<DatasourceDescription> Datasources { get; set; }= new List<DatasourceDescription>();
     public List<DatastoreDescription> Datastores { get; set; }= new List<DatastoreDescription>();
     public List<CommandDescription> Commands { get; set; } = new List<CommandDescription>();
+
+    public static ModuleDescription Build(string moduleTitle, Action<ModuleDescription> customizingMethod = null) {
+      var instance = new ModuleDescription { ModuleTitle = moduleTitle };
+      if (customizingMethod != null) customizingMethod.Invoke(instance);
+      return instance;
+    }
 
   }
 

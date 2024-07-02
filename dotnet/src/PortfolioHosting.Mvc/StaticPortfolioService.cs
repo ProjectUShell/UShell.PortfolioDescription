@@ -4,9 +4,10 @@ using System.Linq;
 
 namespace UShell {
 
-  internal sealed class StaticPortfolioService : IPortfolioService, IStaticPortfolioRegistrar {
+  public sealed class StaticPortfolioService : IPortfolioService, IStaticPortfolioRegistrar {
 
     private Dictionary<string,PortfolioDescription> _PortfolioDescriptions = new Dictionary<string, PortfolioDescription>();
+    private Dictionary<string, Dictionary<string, string>> _PortfolioDescriptionTags = new Dictionary<string, Dictionary<string, string>>();
     private Dictionary<string, ModuleDescription> _ModuleDescriptions = new Dictionary<string, ModuleDescription>();
 
     public StaticPortfolioService(
@@ -17,16 +18,20 @@ namespace UShell {
 
     //////////// SETUP  ////////////
     
-    public void AddDefaultPortfolioDescription(PortfolioDescription desc) {
-      this.AddPortfolioDescription(desc, "default.portfolio");
+    public void AddDefaultPortfolioDescription(PortfolioDescription desc, Dictionary<string, string> tags = null) {
+      this.AddPortfolioDescription(desc, "default.portfolio", tags);
     }
 
-    public void AddPortfolioDescription(PortfolioDescription desc, string nameForUrl) {
+    public void AddPortfolioDescription(PortfolioDescription desc, string nameForUrl, Dictionary<string, string> tags = null) {
+      if(tags == null) {
+        tags = new Dictionary<string, string>();
+      }
       if (nameForUrl.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
         nameForUrl = nameForUrl.Substring(0, nameForUrl.Length - 5);
       }
       lock (_PortfolioDescriptions) {
         _PortfolioDescriptions.Add(nameForUrl, desc);
+        _PortfolioDescriptionTags.Add(nameForUrl, tags);
       }
     }
 
@@ -47,7 +52,7 @@ namespace UShell {
           (pd)=> new PortfolioEntry {
             Label = pd.Value.ApplicationTitle,
             PortfolioUrl = pd.Key,
-            Tags= new Dictionary<string, string>()
+            Tags = _PortfolioDescriptionTags[pd.Key]
           }
         ).ToArray();
       }

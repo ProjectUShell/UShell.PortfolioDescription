@@ -177,6 +177,14 @@ export class AuthTokenConfig {
 
 export class AuthenticatedAccessDescription {
   public primaryUiTokenSources: string[] = [];
+
+  /**
+  * Can be used to couple runtimeTags with entries the of the 'scope' claim from the *primaryUiToken*.
+  * EXAMPLE-1: {"showPowerFeatures": "LIC:PremiumSubscription"} will set the Runtime-Tag 'showPowerFeatures' when 
+  * then token contains a wellknown License scope for a premium subscription.
+  * EXAMPLE-2: {"*Role": "Role:*"} via wildcard-matching every token-scope within the 'Role:' dimension will be
+  * set as runtime-tag, concatinated with the suffix "Role" (so 'Role:Admin' will result in 'AdminRole')
+  */
   public runtimeTagsFromTokenScope: { [tag: string]: string } = {};
 }
 
@@ -204,7 +212,7 @@ export class PortfolioDescription {
     runtimeTagsFromTokenScope: {},
   };
 
-  public anonymouseAccess: AnonymousAccessDescription = {
+  public anonymousAccess: AnonymousAccessDescription = {
     authIndependentCommands: [],
     authIndependentUsecases: [],
     authIndependentWorkspaces: [],
@@ -242,12 +250,6 @@ export class PortfolioDescription {
   public applicationScope: { [dimension: string]: any } | null = {};
 
   public intialRuntimeTags: string[] | null = null;
-
-  /**
-   * Can be used to couple runtimeTags with entries the of the 'scope' claim from the *primaryUiToken*.
-   * For example: ``` {"showPowerFeatures": "LIC:PremiumSubscription"}```
-   */
-  public runtimeTagToTokenBinding: { [runtimeTagToBind: string]: [tokenScopeEntry: string] } | null = null;
 
   /**
    * The fixpoint when resolving relative URLs provided for this array is the
