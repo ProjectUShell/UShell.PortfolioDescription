@@ -8,6 +8,12 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
+*(none)*
+
+
+
+## v 0.3.2
+released **2024-09-19**, including:
  - extended ApplicationScope to ApplicationScopeEntry
 
 
