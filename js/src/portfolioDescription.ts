@@ -179,12 +179,12 @@ export class AuthenticatedAccessDescription {
   public primaryUiTokenSources: string[] = [];
 
   /**
-  * Can be used to couple runtimeTags with entries the of the 'scope' claim from the *primaryUiToken*.
-  * EXAMPLE-1: {"showPowerFeatures": "LIC:PremiumSubscription"} will set the Runtime-Tag 'showPowerFeatures' when 
-  * then token contains a wellknown License scope for a premium subscription.
-  * EXAMPLE-2: {"*Role": "Role:*"} via wildcard-matching every token-scope within the 'Role:' dimension will be
-  * set as runtime-tag, concatinated with the suffix "Role" (so 'Role:Admin' will result in 'AdminRole')
-  */
+   * Can be used to couple runtimeTags with entries the of the 'scope' claim from the *primaryUiToken*.
+   * EXAMPLE-1: {"showPowerFeatures": "LIC:PremiumSubscription"} will set the Runtime-Tag 'showPowerFeatures' when
+   * then token contains a wellknown License scope for a premium subscription.
+   * EXAMPLE-2: {"*Role": "Role:*"} via wildcard-matching every token-scope within the 'Role:' dimension will be
+   * set as runtime-tag, concatinated with the suffix "Role" (so 'Role:Admin' will result in 'AdminRole')
+   */
   public runtimeTagsFromTokenScope: { [tag: string]: string } = {};
 }
 
@@ -247,7 +247,7 @@ export class PortfolioDescription {
   /**
    * can be used like this: ``` { * "tenant": 4711, "region": "DE" * } ```
    */
-  public applicationScope: { [dimension: string]: any } | null = {};
+  public applicationScope: { [dimension: string]: ApplicationScopeEntry } | null = {};
 
   public intialRuntimeTags: string[] | null = null;
 
@@ -256,6 +256,13 @@ export class PortfolioDescription {
    * (portfolio.json)-url where the current PortfolioDescription was loaded from.
    */
   public moduleDescriptionUrls: string[] = [];
+}
+
+export class ApplicationScopeEntry {
+  public label: string = '';
+  public value: any = null;
+  public isVisible: boolean = false;
+  public switchScopeCommand: string | null = null;
 }
 
 //TODO: für die datasrocues muss das UDAS.ModelDescrioption refrerenziert werden

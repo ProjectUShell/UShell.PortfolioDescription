@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AnonymousAccessDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationScopeEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AuthenticatedAccessDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CommandDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DatasourceDescription.cs" />

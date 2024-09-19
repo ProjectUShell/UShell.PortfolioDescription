@@ -59,7 +59,7 @@ namespace UShell {
     /// <summary>
     /// can be used like this: ``` { * "tenant": 4711, "region": "DE" * } ```
     /// </summary>
-    public Dictionary<string, object> ApplicationScope { get; set; } = null;
+    public Dictionary<string, ApplicationScopeEntry> ApplicationScope { get; set; } = null;
 
     /// <summary>
     /// inital runtimtags -> !Tag ist also possible
