@@ -69,6 +69,13 @@ namespace UShell {
     // For commandType=="start-usecase" ##################################
     public string TargetUsecaseKey { get; set; }
 
+
+    // For commandType=="switch-scope" ##################################
+    public string TargetScopeKey { get; set; }
+
+    // For commandType=="switch-scope" ##################################
+    public string TargetScopeValue { get; set; }
+
     // For commandType=="usecase-action" ##################################
     public string ActionName { get; set; }
 
