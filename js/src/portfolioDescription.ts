@@ -461,5 +461,11 @@ export class CommandDescription {
   // For commandType=="usecase-action" ##################################
   public actionName?: string;
 
+  // For commandType=="switch-scope" ##################################
+  public targetScopeKey?: string;
+
+  // For commandType=="switch-scope" ##################################
+  public targetScopeValue?: string;
+
   // "usecaseArgumentMapping":{ "idToEdit": "selectedId (PropAmQuellUc), für alle anderen vom widget geforderten args geht ein modaler dialog auf"},
 }
