@@ -461,7 +461,7 @@ export class CommandDescription {
   // For commandType=="usecase-action" ##################################
   public actionName?: string;
 
-  // For commandType=="switch-scope" ###################################
+  // For commandType=="switch-scope" ##################################
   public targetScopeKey?: string;
 
   // For commandType=="switch-scope" ##################################
