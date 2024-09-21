@@ -436,8 +436,13 @@ export class CommandDescription {
    */
   public menuFolder: string = '';
 
-  public commandType: 'activate-workspace' | 'start-usecase' | 'usecase-action' | 'set-runtime-tag' | 'navigate' =
-    'activate-workspace';
+  public commandType:
+    | 'activate-workspace'
+    | 'start-usecase'
+    | 'usecase-action'
+    | 'set-runtime-tag'
+    | 'navigate'
+    | 'switch-scope' = 'activate-workspace';
 
   // For commandType=="set-runtime-tag" ##################################
 
