@@ -17,6 +17,14 @@ namespace UShell {
 
     public IDynamicParamObject UnitOfWorkDefaults { get; set; } = null;
 
+    public void SetRemoteWidget(string scope, string module, string url) {
+      this.WidgetClass = UsecaseDescription.BuildWidgetJson(scope, module, url);
+    }
+
+    public static string BuildWidgetJson(string scope, string module, string url) {
+      return $"{{\"scope\": \"{scope}\", \"module\": \"{module}\", \"url\": \"{url}\"}}";
+    }
+
   }
 
 }

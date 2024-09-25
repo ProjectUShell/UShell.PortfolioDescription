@@ -384,6 +384,12 @@ export class WorkspaceDescription {
   public workspaceTitle: string = '';
   public iconName?: string;
   public isSidebar: boolean = false;
+  
+  //"default" (in center area) | "sidebar" | "modal"
+  public workspaceAppearance: string = "default";
+
+  //Keys of Application-Scopes that have to be set to nonempty value in order to make this workspace available.
+  public requiredApplicationScopes: string[] = [];
 }
 
 export class CommandDescription {
