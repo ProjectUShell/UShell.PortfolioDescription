@@ -12,6 +12,10 @@ namespace UShell {
     /// </summary>
     public string ApplicationTitle { get; set; } = "Web-Frontend";
 
+    public string LogoUrlLight { get; set; } = null;
+
+    public string LogoUrlDark { get; set; } = null;
+
     /// <summary>
     /// the workspace, where the ushell will tread as landing location
     /// </summary>
