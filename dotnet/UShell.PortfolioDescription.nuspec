@@ -16,10 +16,10 @@
     <projectUrl>https://github.com/ProjectUShell/UShell.PortfolioDescription.git</projectUrl>
     <dependencies>
       <group targetFramework=".NETFramework4.6">
-        <dependency id="SmartStandards.AuthTokenHandling" version="[2.3.0,2.9999]" />
+        <dependency id="SmartStandards.AuthTokenHandling" version="3.0.0" />
       </group>
       <group targetFramework="net6.0">
-        <dependency id="SmartStandards.AuthTokenHandling" version="[2.3.0,2.9999]" />
+        <dependency id="SmartStandards.AuthTokenHandling" version="3.0.0" />
       </group>
     </dependencies>
   </metadata>
