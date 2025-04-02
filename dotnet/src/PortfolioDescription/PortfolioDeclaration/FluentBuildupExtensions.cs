@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Data;
 
 namespace UShell {
 
@@ -25,7 +26,7 @@ namespace UShell {
       this PortfolioDescription description,
       Action<AnonymousAccessDescription> customizingMethod = null
      ) {
-      if(description.AnonymousAccess == null) {
+      if (description.AnonymousAccess == null) {
         description.AnonymousAccess = new AnonymousAccessDescription();
       }
       if (customizingMethod != null) {
@@ -80,6 +81,54 @@ namespace UShell {
       }
       description.Usecases.Add(instance);
       return instance.UsecaseKey;
+    }
+
+    /// <summary>
+    /// Adds a new UsecaseDescription and returns its 'UsecaseKey'
+    /// Creates a StaticUsecaseAssignment for the given 'workspaceKey'
+    /// Adds a Workspace with the given 'workspaceTitle' if it does not exist yet
+    /// Adds a Command to start the Workspace with the given 'workspaceTitle'
+    /// </summary>
+    /// <param name="description"></param>
+    /// <param name="usecaseTitle"></param>
+    /// <param name="workspaceTitle"></param>
+    /// <param name="menuFolder"></param>
+    /// <param name="customizingMethod"></param>
+    /// <returns></returns>
+    public static string AddUsecaseToWorkspaceWithCommand(
+      this ModuleDescription description,
+      string usecaseTitle,
+      string workspaceTitle,
+      string menuFolder,
+      Action<UsecaseDescription, WorkspaceDescription, CommandDescription> customizingMethod = null
+     ) {
+      UsecaseDescription usecase = new UsecaseDescription();
+      usecase.Title = usecaseTitle;
+      usecase.UsecaseKey = usecaseTitle.ToLower().Replace(' ', '-');
+
+      WorkspaceDescription workspace = new WorkspaceDescription();
+      workspace.WorkspaceTitle = workspaceTitle;
+      workspace.WorkspaceKey = workspaceTitle.ToLower().Replace(' ', '-');
+
+      CommandDescription command = new CommandDescription();
+      command.UniqueCommandKey = $"show-{workspaceTitle.ToLower().Replace(' ', '-')}";
+      command.Label = workspaceTitle;
+      command.CommandType = "activate-workspace";
+      command.MenuFolder = menuFolder;
+      command.TargetWorkspaceKey = workspace.WorkspaceKey;
+
+      StaticUsecaseAssignment staticUsecaseAssignment = new StaticUsecaseAssignment();
+      staticUsecaseAssignment.UsecaseKey = usecase.UsecaseKey;
+      staticUsecaseAssignment.TargetWorkspaceKey = workspace.WorkspaceKey;
+
+      if (customizingMethod != null) {
+        customizingMethod.Invoke(usecase, workspace, command);
+      }
+      description.Usecases.Add(usecase);
+      description.Workspaces.Add(workspace);
+      description.Commands.Add(command);
+      description.StaticUsecaseAssignments.Add(staticUsecaseAssignment);
+      return usecase.UsecaseKey;
     }
 
     #endregion
