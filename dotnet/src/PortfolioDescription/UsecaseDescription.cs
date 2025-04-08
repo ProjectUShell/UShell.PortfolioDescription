@@ -48,7 +48,7 @@ namespace UShell {
       } }).ToArray();
       this.UnitOfWorkDefaults["mapDynamic"] = dynamicParamMappingEntries;
     }
-
+        
   }
 
 }

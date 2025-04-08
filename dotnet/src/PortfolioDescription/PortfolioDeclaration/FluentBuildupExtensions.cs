@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Data;
 
-namespace UShell {
+namespace UShell {  
 
   public static class FluentBuildupExtensions {
 
@@ -81,6 +81,54 @@ namespace UShell {
       }
       description.Usecases.Add(instance);
       return instance.UsecaseKey;
+    }
+
+    public static void AddGuifad(this ModuleDescription description, string entityName, string title) {
+      string usecaseKey = title.ToLower().Replace(' ', '-');
+      var instance = new UsecaseDescription() {
+        UsecaseKey = usecaseKey,
+        WidgetClass = "guifad",
+        Title = title,
+        SingletonActionkey = usecaseKey,
+        UnitOfWorkDefaults = new IDynamicParamObject {
+          { "entityName", entityName }
+        }
+      };
+      description.Usecases.Add(instance);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="description"></param>
+    /// <param name="datastoreKey"></param>
+    /// <param name="url"></param>
+    /// <param name="routePattern">route | body | method</param>
+    /// <param name="primaryTokenSourceUid"></param>
+    /// <param name="customizingMethod"></param>
+    public static void AddFuseDatastore(
+      this ModuleDescription description,
+      string datastoreKey,
+      string url,
+      string routePattern,
+      string primaryTokenSourceUid = null,
+      Action<DatastoreDescription> customizingMethod = null
+    ) {
+      var instance = new DatastoreDescription();
+      instance.Key = datastoreKey;
+      instance.ProviderClass = "fuse";
+      Dictionary<string, string> providerArguments = new Dictionary<string, string>() {
+        { "url", url },
+        { "routePattern", routePattern }
+      };
+      if (primaryTokenSourceUid != null) {
+        providerArguments.Add("primaryTokenSourceUid", primaryTokenSourceUid);
+      }
+      instance.ProviderArguments = providerArguments;
+      if (customizingMethod != null) {
+        customizingMethod.Invoke(instance);
+      }
+      description.Datastores.Add(instance);
     }
 
     /// <summary>
