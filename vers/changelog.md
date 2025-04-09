@@ -7,10 +7,11 @@ This files contains a version history including all changes relevant for semanti
 
 
 ## Upcoming Changes
+ - added convenience for Fluent creation of PortfolioDesciptions (.net)
 
-* updated to SmartStandards.AuthTokenHandling 3.0.0 (**MVP**-state is now reached)
-
-
+## v 1.0.0
+released **2024-12-16**, including:
+ - updated to SmartStandards.AuthTokenHandling 3.0.0 (**MVP**-state is now reached)
 
 ## v 0.3.8
 released **2024-10-28**, including:
