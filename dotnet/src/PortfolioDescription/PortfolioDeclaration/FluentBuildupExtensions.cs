@@ -83,7 +83,7 @@ namespace UShell {
       return instance.UsecaseKey;
     }
 
-    public static void AddGuifad(this ModuleDescription description, string entityName, string title) {
+    public static string AddGuifad(this ModuleDescription description, string entityName, string title) {
       string usecaseKey = title.ToLower().Replace(' ', '-');
       var instance = new UsecaseDescription() {
         UsecaseKey = usecaseKey,
@@ -95,6 +95,7 @@ namespace UShell {
         }
       };
       description.Usecases.Add(instance);
+      return usecaseKey;
     }
 
     /// <summary>
@@ -122,7 +123,7 @@ namespace UShell {
         { "routePattern", routePattern }
       };
       if (primaryTokenSourceUid != null) {
-        providerArguments.Add("primaryTokenSourceUid", primaryTokenSourceUid);
+        providerArguments.Add("tokenSourceUid", primaryTokenSourceUid);
       }
       instance.ProviderArguments = providerArguments;
       if (customizingMethod != null) {
