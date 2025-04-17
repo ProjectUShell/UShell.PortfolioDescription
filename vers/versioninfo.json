@@ -1,13 +1,13 @@
 {
-  "currentVersion": "1.0.1",
-  "currentVersionWithSuffix": "1.0.1",
+  "currentVersion": "1.0.2",
+  "currentVersionWithSuffix": "1.0.2",
   "releaseType": "official",
-  "previousVersion": "1.0.0",
+  "previousVersion": "1.0.1",
   "changeGrade": "patch",
   "currentMajor": 1,
   "currentMinor": 0,
-  "currentPatch": 1,
-  "versionDateInfo": "2025-04-09",
-  "versionTimeInfo": "07:33:06",
-  "versionNotes": "- added convenience for Fluent creation of PortfolioDesciptions (.net)\n"
+  "currentPatch": 2,
+  "versionDateInfo": "2025-04-17",
+  "versionTimeInfo": "17:08:44",
+  "versionNotes": "- new revision without significant changes\n"
 }

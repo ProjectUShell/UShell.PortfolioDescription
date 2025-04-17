@@ -12,6 +12,12 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 1.0.2
+released **2025-04-17**, including:
+ - new revision without significant changes
+
+
+
 ## v 1.0.1
 released **2025-04-09**, including:
  - added convenience for Fluent creation of PortfolioDesciptions (.net)
