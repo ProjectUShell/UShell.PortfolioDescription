@@ -8,6 +8,12 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
+*(none)*
+
+
+
+## v 1.0.3
+released **2025-05-29**, including:
  - added ServiceDescriptions and removed 461 targets
 
 
