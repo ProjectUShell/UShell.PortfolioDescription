@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{431B90E9-4591-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioDescription.net6.0", "src\PortfolioDescription.net6.0\PortfolioDescription.net6.0.csproj", "{7B5BAEA8-7E79-4A30-B6C1-4DA4831AF970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioDescription.net461", "src\PortfolioDescription.net461\PortfolioDescription.net461.csproj", "{B0BA06FE-6437-4B9E-8C76-3ADFC8D191D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioDescription.net48", "src\PortfolioDescription.net461\PortfolioDescription.net48.csproj", "{B0BA06FE-6437-4B9E-8C76-3ADFC8D191D2}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PortfolioHosting.Mvc", "src\PortfolioHosting.Mvc\PortfolioHosting.Mvc.shproj", "{CF0A161A-99BA-4F01-AF5E-16C6FCBC95AE}"
 EndProject

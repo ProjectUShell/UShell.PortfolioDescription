@@ -345,6 +345,8 @@ export class ModuleDescription {
 
   public datastores: DatastoreDescription[] = [];
 
+  public services: ServiceDescription[] = [];
+
   public commands: CommandDescription[] = [];
 }
 
@@ -359,6 +361,13 @@ export class DatastoreDescription {
   public key: string = '';
   public providerClass: 'localstore' | 'fuse' = 'fuse';
   public providerArguments?: any;
+}
+
+export class ServiceDescription {
+  public serviceUid: string = '';
+  public providerClass: string = 'proxy';
+  public providerArguments?: any;
+  public serviceName: string = '';
 }
 
 export class UsecaseDescription {

@@ -83,7 +83,12 @@ namespace UShell {
       return instance.UsecaseKey;
     }
 
-    public static string AddGuifad(this ModuleDescription description, string entityName, string title) {
+    public static string AddGuifad(
+      this ModuleDescription description,
+      string entityName, 
+      string title, 
+      Action<UsecaseDescription> customizingMethod = null
+    ) {
       string usecaseKey = title.ToLower().Replace(' ', '-');
       var instance = new UsecaseDescription() {
         UsecaseKey = usecaseKey,
@@ -94,6 +99,9 @@ namespace UShell {
           { "entityName", entityName }
         }
       };
+      if (customizingMethod != null) {
+        customizingMethod.Invoke(instance);
+      }
       description.Usecases.Add(instance);
       return usecaseKey;
     }
@@ -178,6 +186,32 @@ namespace UShell {
       description.Commands.Add(command);
       description.StaticUsecaseAssignments.Add(staticUsecaseAssignment);
       return usecase.UsecaseKey;
+    }
+
+    public static void AddProxyService(
+      this ModuleDescription description,
+      string serviceName,
+      string url,
+      string primaryTokenSourceUid = null,
+      Action<ServiceDescription> customizingMethod = null
+    ) {
+      var instance = new ServiceDescription();
+      instance.ServiceName = serviceName;
+      instance.ServiceUid  = serviceName.ToLower().Replace(' ', '-');
+      
+      instance.ProviderClass = "proxy";
+      Dictionary<string, string> providerArguments = new Dictionary<string, string>() {
+        { "url", url },
+      };
+      if (primaryTokenSourceUid != null) {
+        providerArguments.Add("tokenSourceUid", primaryTokenSourceUid);
+      }
+      instance.ProviderArguments = providerArguments;
+
+      if (customizingMethod != null) {
+        customizingMethod.Invoke(instance);
+      }
+      description.Services.Add(instance);
     }
 
     #endregion

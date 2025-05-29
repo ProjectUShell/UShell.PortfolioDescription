@@ -14,6 +14,7 @@ namespace UShell {
     public List<UsecaseDescription> Usecases { get; set; }= new List<UsecaseDescription>();
     public List<StaticUsecaseAssignment> StaticUsecaseAssignments { get; set; }= new List<StaticUsecaseAssignment>();
     public List<DatasourceDescription> Datasources { get; set; }= new List<DatasourceDescription>();
+    public List<ServiceDescription> Services { get; set; }= new List<ServiceDescription>();
     public List<DatastoreDescription> Datastores { get; set; }= new List<DatastoreDescription>();
     public List<CommandDescription> Commands { get; set; } = new List<CommandDescription>();
 
