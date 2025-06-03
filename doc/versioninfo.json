@@ -1,13 +1,13 @@
 {
-  "currentVersion": "1.0.3",
-  "currentVersionWithSuffix": "1.0.3",
-  "releaseType": "official",
-  "previousVersion": "1.0.2",
-  "changeGrade": "patch",
+  "currentVersion": "1.1.0",
+  "currentVersionWithSuffix": "1.1.0",
+  "releaseType": "",
+  "previousVersion": "1.0.3",
+  "changeGrade": "minor",
   "currentMajor": 1,
-  "currentMinor": 0,
-  "currentPatch": 3,
-  "versionDateInfo": "2025-05-29",
-  "versionTimeInfo": "07:25:37",
-  "versionNotes": "- added ServiceDescriptions and removed 461 targets\n"
+  "currentMinor": 1,
+  "currentPatch": 0,
+  "versionDateInfo": "2025-06-03",
+  "versionTimeInfo": "06:22:24",
+  "versionNotes": "- new Feature: added .NET 8 Target\n"
 }
