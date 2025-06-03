@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4130D21C-FE8F-4925-93E7-217B4AF1B7D9}"
 	ProjectSection(SolutionItems) = preProject
-		..\vers\changelog.md = ..\vers\changelog.md
+		..\doc\changelog.md = ..\doc\changelog.md
 		..\readme.md = ..\readme.md
 		UShell.PortfolioDescription.nuspec = UShell.PortfolioDescription.nuspec
 		UShell.PortfolioHosting.Mvc.nuspec = UShell.PortfolioHosting.Mvc.nuspec
@@ -23,13 +23,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{431B90E9-4591-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioDescription.net6.0", "src\PortfolioDescription.net6.0\PortfolioDescription.net6.0.csproj", "{7B5BAEA8-7E79-4A30-B6C1-4DA4831AF970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioDescription.net48", "src\PortfolioDescription.net461\PortfolioDescription.net48.csproj", "{B0BA06FE-6437-4B9E-8C76-3ADFC8D191D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioDescription.net48", "src\PortfolioDescription.net48\PortfolioDescription.net48.csproj", "{B0BA06FE-6437-4B9E-8C76-3ADFC8D191D2}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PortfolioHosting.Mvc", "src\PortfolioHosting.Mvc\PortfolioHosting.Mvc.shproj", "{CF0A161A-99BA-4F01-AF5E-16C6FCBC95AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioHosting.Mvc.net6.0", "src\PortfolioHosting.Mvc.net6.0\PortfolioHosting.Mvc.net6.0.csproj", "{4A6D3813-1858-45AE-A72E-12F367A32150}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{ABB66B29-F3CC-4270-86D2-939BAA14C471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioDescription.net8.0", "src\PortfolioDescription.net8.0\PortfolioDescription.net8.0.csproj", "{23FD43F2-1239-DF70-C824-8BEC3364B08C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioHosting.Mvc.net8.0", "src\PortfolioHosting.Mvc.net8.0\PortfolioHosting.Mvc.net8.0.csproj", "{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,14 @@ Global
 		{4A6D3813-1858-45AE-A72E-12F367A32150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6D3813-1858-45AE-A72E-12F367A32150}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6D3813-1858-45AE-A72E-12F367A32150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23FD43F2-1239-DF70-C824-8BEC3364B08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23FD43F2-1239-DF70-C824-8BEC3364B08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23FD43F2-1239-DF70-C824-8BEC3364B08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23FD43F2-1239-DF70-C824-8BEC3364B08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,12 +73,16 @@ Global
 		{CF0A161A-99BA-4F01-AF5E-16C6FCBC95AE} = {EFB5135D-039A-4D92-8FDD-9EA5D070F991}
 		{4A6D3813-1858-45AE-A72E-12F367A32150} = {ABB66B29-F3CC-4270-86D2-939BAA14C471}
 		{ABB66B29-F3CC-4270-86D2-939BAA14C471} = {EFB5135D-039A-4D92-8FDD-9EA5D070F991}
+		{23FD43F2-1239-DF70-C824-8BEC3364B08C} = {ABB66B29-F3CC-4270-86D2-939BAA14C471}
+		{6CC2B898-7C6D-1236-7C1D-F6FA06B6F83A} = {ABB66B29-F3CC-4270-86D2-939BAA14C471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2F37C1D-32F0-4BF2-AAEB-46B9D8C07D23}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\PortfolioDescription\PortfolioDescription.projitems*{23fd43f2-1239-df70-c824-8bec3364b08c}*SharedItemsImports = 5
 		src\PortfolioHosting.Mvc\PortfolioHosting.Mvc.projitems*{4a6d3813-1858-45ae-a72e-12f367a32150}*SharedItemsImports = 5
+		src\PortfolioHosting.Mvc\PortfolioHosting.Mvc.projitems*{6cc2b898-7c6d-1236-7c1d-f6fa06b6f83a}*SharedItemsImports = 5
 		src\PortfolioDescription\PortfolioDescription.projitems*{7b5baea8-7e79-4a30-b6c1-4da4831af970}*SharedItemsImports = 5
 		src\PortfolioDescription\PortfolioDescription.projitems*{b0ba06fe-6437-4b9e-8c76-3adfc8d191d2}*SharedItemsImports = 4
 		src\PortfolioDescription\PortfolioDescription.projitems*{cf0a161a-99ba-4f01-af5e-16c6fcbc85ae}*SharedItemsImports = 13
