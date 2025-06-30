@@ -106,6 +106,33 @@ namespace UShell {
       return usecaseKey;
     }
 
+    public static void AddGuifadWithCommandAndWorkspace(
+      this ModuleDescription description,
+      string entityName,
+      string workspaceTitle,
+      string usecaseTitle = null,
+      string menuFolder = null
+    ) {
+      if (usecaseTitle == null) {
+        usecaseTitle = workspaceTitle;
+      }
+      string usecaseKey = description.AddGuifad(entityName, usecaseTitle);
+      string workspaceKey = description.AddWorkspace(workspaceTitle);
+      StaticUsecaseAssignment staticUsecaseAssignment = new StaticUsecaseAssignment() {
+        UsecaseKey = usecaseKey,
+        TargetWorkspaceKey = workspaceKey
+      };
+      description.StaticUsecaseAssignments.Add(staticUsecaseAssignment);
+      CommandDescription command = new CommandDescription() {
+        UniqueCommandKey = $"show-{workspaceKey}",
+        Label = workspaceTitle,
+        CommandType = "activate-workspace",
+        MenuFolder = menuFolder,
+        TargetWorkspaceKey = workspaceKey
+      };
+      description.Commands.Add(command);
+    }
+
     /// <summary>
     /// 
     /// </summary>
