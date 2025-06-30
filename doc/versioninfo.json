@@ -1,13 +1,13 @@
 {
-  "currentVersion": "1.1.0",
-  "currentVersionWithSuffix": "1.1.0",
+  "currentVersion": "1.1.1",
+  "currentVersionWithSuffix": "1.1.1",
   "releaseType": "",
-  "previousVersion": "1.0.3",
-  "changeGrade": "minor",
+  "previousVersion": "1.1.0",
+  "changeGrade": "fix",
   "currentMajor": 1,
   "currentMinor": 1,
-  "currentPatch": 0,
-  "versionDateInfo": "2025-06-03",
-  "versionTimeInfo": "06:22:24",
-  "versionNotes": "- new Feature: added .NET 8 Target\n"
+  "currentPatch": 1,
+  "versionDateInfo": "2025-06-30",
+  "versionTimeInfo": "13:14:24",
+  "versionNotes": "- new revision without significant changes\n"
 }

@@ -12,6 +12,12 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 1.1.1
+released **2025-06-30**, including:
+ - new revision without significant changes
+
+
+
 ## v 1.1.0
 released **2025-06-03**, including:
  - **new Feature**: added .NET 8 Target
