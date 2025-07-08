@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+#if NETCOREAPP
 using System.Text.Json;
+#else
+using Newtonsoft.Json;
+#endif
 
 namespace UShell {
   public static class PortfolioExtensions {
@@ -28,9 +32,13 @@ namespace UShell {
             HttpResponseMessage response = http.GetAsync(url).GetAwaiter().GetResult();
             response.EnsureSuccessStatusCode();
             string json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+#if NETCOREAPP
             loaded = JsonSerializer.Deserialize<ModuleDescription>(json, new JsonSerializerOptions {
               PropertyNameCaseInsensitive = true
             });
+#else
+            loaded = JsonConvert.DeserializeObject<ModuleDescription>(json);
+#endif
           }
         }
         catch (Exception) {
