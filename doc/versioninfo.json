@@ -1,13 +1,13 @@
 {
-  "currentVersion": "1.1.2",
-  "currentVersionWithSuffix": "1.1.2",
+  "currentVersion": "2.0.0",
+  "currentVersionWithSuffix": "2.0.0",
   "releaseType": "",
-  "previousVersion": "1.1.1",
-  "changeGrade": "fix",
-  "currentMajor": 1,
-  "currentMinor": 1,
-  "currentPatch": 2,
-  "versionDateInfo": "2025-07-08",
-  "versionTimeInfo": "12:30:55",
-  "versionNotes": "- new revision without significant changes\n"
+  "previousVersion": "1.1.2",
+  "changeGrade": "major",
+  "currentMajor": 2,
+  "currentMinor": 0,
+  "currentPatch": 0,
+  "versionDateInfo": "2025-09-03",
+  "versionTimeInfo": "14:06:49",
+  "versionNotes": "- breaking Change: new 'ApplicationScopeDefinition'\n"
 }

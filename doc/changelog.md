@@ -8,7 +8,13 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* **breaking Change**: new 'ApplicationScopeDefinition'
+*(none)*
+
+
+
+## v 2.0.0
+released **2025-09-03**, including:
+ - **breaking Change**: new 'ApplicationScopeDefinition'
 
 
 
