@@ -40,7 +40,7 @@
   <Import Project="..\PortfolioDescription\PortfolioDescription.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="SmartStandards.AuthTokenHandling" Version="3.0.4" />
+    <PackageReference Include="SmartStandards.AuthTokenHandling" Version="4.1.0" />
   </ItemGroup>
 
 </Project>
