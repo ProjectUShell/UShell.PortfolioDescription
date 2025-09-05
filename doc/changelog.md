@@ -8,7 +8,13 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* **breaking Change**: Updated to AuthTokenHandling 4.x
+*(none)*
+
+
+
+## v 3.0.0
+released **2025-09-05**, including:
+ - **breaking Change**: Updated to AuthTokenHandling 4.x
 
 
 
