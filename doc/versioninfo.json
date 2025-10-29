@@ -1,13 +1,13 @@
 {
-  "currentVersion": "3.0.0",
-  "currentVersionWithSuffix": "3.0.0",
+  "currentVersion": "4.0.0",
+  "currentVersionWithSuffix": "4.0.0",
   "releaseType": "",
-  "previousVersion": "2.0.0",
+  "previousVersion": "3.0.0",
   "changeGrade": "major",
-  "currentMajor": 3,
+  "currentMajor": 4,
   "currentMinor": 0,
   "currentPatch": 0,
-  "versionDateInfo": "2025-09-05",
-  "versionTimeInfo": "05:10:21",
-  "versionNotes": "- breaking Change: Updated to AuthTokenHandling 4.x\n"
+  "versionDateInfo": "2025-10-29",
+  "versionTimeInfo": "14:28:25",
+  "versionNotes": "- breaking Change: new 'ApplicationScopeDefinition' (js)\n"
 }
