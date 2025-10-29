@@ -251,7 +251,7 @@ export class PortfolioDescription {
   /**
    * can be used like this: ``` { * "tenant": 4711, "region": "DE" * } ```
    */
-  public applicationScope: { [dimension: string]: ApplicationScopeEntry } | null = {};
+  public applicationScope: ApplicationScopeEntry[] | null = [];
 
   public intialRuntimeTags: string[] | null = null;
 
@@ -263,10 +263,29 @@ export class PortfolioDescription {
 }
 
 export class ApplicationScopeEntry {
-  public label: string = '';
-  public value: any = null;
   public isVisible: boolean = false;
   public switchScopeCommand: string | null = null;
+
+  public name: string = '';
+  public label: string = '';
+  public initialValue: string = '';
+  public knownValues: { [key: string]: string } | null = null;
+  public dependentScopeNames: string[] | null = null;
+  public dependentScopeConstraints: ApplicationScopeValueConstraint[] | null = null;
+}
+
+export class ApplicationScopeValueConstraint {
+  /// <summary>
+  /// NOTE: if there is more than one constraint, having the same KnownValue, then this is an OR condition!
+  /// </summary>
+  public knownValue: string = '';
+
+  /// <summary>
+  /// The array length must be initialized equal to the length of DependentScopeNames.
+  /// Every Array entry may be null (means to be valid for all values of the dependent scope) or
+  /// an exact value (of the dependent scope), which is required for .
+  /// </summary>
+  public dependentScopeValues: string[] | null = null;
 }
 
 //TODO: für die datasrocues muss das UDAS.ModelDescrioption refrerenziert werden
