@@ -1,13 +1,13 @@
 {
-  "currentVersion": "4.0.0",
-  "currentVersionWithSuffix": "4.0.0",
+  "currentVersion": "4.0.1",
+  "currentVersionWithSuffix": "4.0.1",
   "releaseType": "",
-  "previousVersion": "3.0.0",
-  "changeGrade": "major",
+  "previousVersion": "4.0.0",
+  "changeGrade": "fix",
   "currentMajor": 4,
   "currentMinor": 0,
-  "currentPatch": 0,
-  "versionDateInfo": "2025-10-29",
-  "versionTimeInfo": "14:28:25",
-  "versionNotes": "- breaking Change: new 'ApplicationScopeDefinition' (js)\n"
+  "currentPatch": 1,
+  "versionDateInfo": "2026-03-05",
+  "versionTimeInfo": "14:27:30",
+  "versionNotes": "- new revision without significant changes\n"
 }
