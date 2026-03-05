@@ -17,30 +17,53 @@ namespace UShell {
     }
 
     //////////// SETUP  ////////////
-    
+
+    /// <summary>
+    /// (will automatically be hosted as "{APP-ROOT}/default.portfolio.json")
+    /// </summary>
+    /// <param name="desc"></param>
+    /// <param name="tags"></param>
     public void AddDefaultPortfolioDescription(PortfolioDescription desc, Dictionary<string, string> tags = null) {
-      this.AddPortfolioDescription(desc, "default.portfolio", tags);
+      this.AddPortfolioDescription(desc, "default", tags);
     }
 
-    public void AddPortfolioDescription(PortfolioDescription desc, string nameForUrl, Dictionary<string, string> tags = null) {
+    /// <summary>
+    /// </summary>
+    /// <param name="desc"></param>
+    /// <param name="urlCompatibleName">
+    /// Just a name like "myproduct" without any suffix...
+    /// (will automatically be hosted as "{APP-ROOT}/myproduct.portfolio.json")
+    /// </param>
+    /// <param name="tags"></param>
+    public void AddPortfolioDescription(PortfolioDescription desc, string urlCompatibleName, Dictionary<string, string> tags = null) {
       if(tags == null) {
         tags = new Dictionary<string, string>();
       }
-      if (nameForUrl.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
-        nameForUrl = nameForUrl.Substring(0, nameForUrl.Length - 5);
+      if (urlCompatibleName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
+        urlCompatibleName = urlCompatibleName.Substring(0, urlCompatibleName.Length - 5);
+      }
+      if (!urlCompatibleName.EndsWith(".portfolio", StringComparison.CurrentCultureIgnoreCase)) {
+        urlCompatibleName = urlCompatibleName + ".portfolio";
       }
       lock (_PortfolioDescriptions) {
-        _PortfolioDescriptions.Add(nameForUrl, desc);
-        _PortfolioDescriptionTags.Add(nameForUrl, tags);
+        _PortfolioDescriptions.Add(urlCompatibleName, desc);
+        _PortfolioDescriptionTags.Add(urlCompatibleName, tags);
       }
     }
 
-    public void AddModuleDescription(ModuleDescription desc, string nameForUrl) {
-      if (nameForUrl.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
-        nameForUrl = nameForUrl.Substring(0, nameForUrl.Length - 5);
+    /// <summary>
+    /// </summary>
+    /// <param name="desc"></param>
+    /// <param name="urlCompatibleName">
+    /// Just a name like "mymodule" without any suffix...
+    /// (will automatically be hosted as "{APP-ROOT}/mymodule/module.json")
+    /// </param>
+    public void AddModuleDescription(ModuleDescription desc, string urlCompatibleName) {
+      if (urlCompatibleName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
+        urlCompatibleName = urlCompatibleName.Substring(0, urlCompatibleName.Length - 5);
       }
       lock (_ModuleDescriptions) {
-        _ModuleDescriptions.Add(nameForUrl, desc);
+        _ModuleDescriptions.Add(urlCompatibleName, desc);
       }
     }
 
@@ -51,7 +74,7 @@ namespace UShell {
         return _PortfolioDescriptions.Select(
           (pd)=> new PortfolioEntry {
             Label = pd.Value.ApplicationTitle,
-            PortfolioUrl = pd.Key,
+            PortfolioUrl = pd.Key + ".json",
             Tags = _PortfolioDescriptionTags[pd.Key]
           }
         ).ToArray();

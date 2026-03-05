@@ -70,6 +70,7 @@ namespace UShell {
     /// <summary>
     /// The fixpoint when resolving relative URLs provided for this array is the
     /// (portfolio.json)-url where the current PortfolioDescription was loaded from.
+    /// Usually, a relative module URL looks like this: "myModule/module.json"
     /// </summary>
     public string[] ModuleDescriptionUrls { get; set; } = new string[] { };
 

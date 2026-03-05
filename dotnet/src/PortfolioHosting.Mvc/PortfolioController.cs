@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace UShell {
 
   [ApiController]
   [ApiExplorerSettings(GroupName = "UShellPorfolio")]
+  [AllowAnonymous()]
   internal sealed class PortfolioController : ControllerBase {
 
     private readonly ILogger<PortfolioController> _Logger;
@@ -18,7 +20,7 @@ namespace UShell {
     }
 
     [HttpGet()]
-    [Route("Portfolio/{portfolioName}.json")]
+    [Route("{portfolioName}.portfolio.json")]
     public ActionResult<PortfolioDescription> GetPortfolio([FromRoute] string portfolioName) {
       try {
         PortfolioDescription defaultPortfolio = this._PortfolioService.GetPortfolioDescription(portfolioName);
@@ -31,7 +33,7 @@ namespace UShell {
     }
 
     [HttpGet()]
-    [Route("Portfolio/Module/{moduleName}.json")]
+    [Route("{moduleName}/module.json")]
     public ActionResult<ModuleDescription> GetModule([FromRoute] string moduleName) {
       try {
         return this._PortfolioService.GetModuleDescription(moduleName);
@@ -43,7 +45,7 @@ namespace UShell {
     }
 
     [HttpGet()]
-    [Route("Portfolio/PortfolioIndex.json")]
+    [Route("portfolioindex.json")]
     public ActionResult<List<PortfolioEntry>> PortfolioIndex() {
       try {
         return this.Ok(this._PortfolioService.GetPortfolioIndex());
