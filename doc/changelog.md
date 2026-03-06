@@ -8,7 +8,13 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* Small name adjustments to some parameters
+*(none)*
+
+
+
+## v 4.0.2
+released **2026-03-06**, including:
+ - Small name adjustments to some parameters
 
 
 
