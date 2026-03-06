@@ -1,10 +1,12 @@
 ﻿using Security.AccessTokenHandling;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace UShell {
 
+  [DebuggerDisplay("{ApplicationTitle}")]
   public class PortfolioDescription {
 
     /// <summary>

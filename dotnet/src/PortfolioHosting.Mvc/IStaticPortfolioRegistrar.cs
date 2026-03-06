@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Policy;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace UShell {
 
@@ -15,21 +17,21 @@ namespace UShell {
     /// <summary>
     /// </summary>
     /// <param name="desc"></param>
-    /// <param name="urlCompatibleName">
+    /// <param name="portfolioName">
     /// Just a name like "myproduct" without any suffix...
     /// (will automatically be hosted as "{APP-ROOT}/myproduct.portfolio.json")
     /// </param>
     /// <param name="tags"></param>
-    void AddPortfolioDescription(PortfolioDescription desc, string urlCompatibleName, Dictionary<string, string> tags = null); 
+    void AddPortfolioDescription(PortfolioDescription desc, string portfolioName, Dictionary<string, string> tags = null); 
 
     /// <summary>
     /// </summary>
     /// <param name="desc"></param>
-    /// <param name="urlCompatibleName">
-    /// Just a name like "mymodule" without any suffix...
+    /// <param name = "moduleScopingKey" >
+    /// An technical name(URL-SAFE!) to discriminate application modules from each other.
     /// (will automatically be hosted as "{APP-ROOT}/mymodule/module.json")
     /// </param>
-    void AddModuleDescription(ModuleDescription desc, string urlCompatibleName);
+    void AddModuleDescription(ModuleDescription desc, string moduleScopingKey);
 
   }
 

@@ -7,8 +7,9 @@ using System.Collections.Generic;
 namespace UShell {
 
   [ApiController]
-  [ApiExplorerSettings(GroupName = "UShellPorfolio")]
+  [ApiExplorerSettings(GroupName = "UShellPortfolio")]
   [AllowAnonymous()]
+  [Route("/")]
   internal sealed class PortfolioController : ControllerBase {
 
     private readonly ILogger<PortfolioController> _Logger;
@@ -23,7 +24,7 @@ namespace UShell {
     [Route("{portfolioName}.portfolio.json")]
     public ActionResult<PortfolioDescription> GetPortfolio([FromRoute] string portfolioName) {
       try {
-        PortfolioDescription defaultPortfolio = this._PortfolioService.GetPortfolioDescription(portfolioName);
+        PortfolioDescription defaultPortfolio = _PortfolioService.GetPortfolioDescription(portfolioName);
         return this.Ok(defaultPortfolio);
       }
       catch (Exception ex) {
@@ -33,10 +34,11 @@ namespace UShell {
     }
 
     [HttpGet()]
-    [Route("{moduleName}/module.json")]
-    public ActionResult<ModuleDescription> GetModule([FromRoute] string moduleName) {
+    [Route("{moduleScopingKey}/module.json")]
+    public ActionResult<ModuleDescription> GetModule([FromRoute] string moduleScopingKey) {
       try {
-        return this._PortfolioService.GetModuleDescription(moduleName);
+        ModuleDescription moduleDesc = _PortfolioService.GetModuleDescription(moduleScopingKey);
+        return this.Ok(moduleDesc);
       }
       catch (Exception ex) {
         _Logger.LogCritical(ex, ex.Message);
@@ -48,7 +50,8 @@ namespace UShell {
     [Route("portfolioindex.json")]
     public ActionResult<List<PortfolioEntry>> PortfolioIndex() {
       try {
-        return this.Ok(this._PortfolioService.GetPortfolioIndex());
+        PortfolioEntry[] idx = _PortfolioService.GetPortfolioIndex();
+        return this.Ok(idx);
       }
       catch (Exception ex) {
         _Logger.LogCritical(ex, ex.Message);

@@ -30,24 +30,24 @@ namespace UShell {
     /// <summary>
     /// </summary>
     /// <param name="desc"></param>
-    /// <param name="urlCompatibleName">
+    /// <param name="portfolioName">
     /// Just a name like "myproduct" without any suffix...
     /// (will automatically be hosted as "{APP-ROOT}/myproduct.portfolio.json")
     /// </param>
     /// <param name="tags"></param>
-    public void AddPortfolioDescription(PortfolioDescription desc, string urlCompatibleName, Dictionary<string, string> tags = null) {
+    public void AddPortfolioDescription(PortfolioDescription desc, string portfolioName, Dictionary<string, string> tags = null) {
       if(tags == null) {
         tags = new Dictionary<string, string>();
       }
-      if (urlCompatibleName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
-        urlCompatibleName = urlCompatibleName.Substring(0, urlCompatibleName.Length - 5);
+      if (portfolioName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
+        portfolioName = portfolioName.Substring(0, portfolioName.Length - 5);
       }
-      if (!urlCompatibleName.EndsWith(".portfolio", StringComparison.CurrentCultureIgnoreCase)) {
-        urlCompatibleName = urlCompatibleName + ".portfolio";
+      if (portfolioName.EndsWith(".portfolio", StringComparison.CurrentCultureIgnoreCase)) {
+        portfolioName = portfolioName.Substring(0, portfolioName.Length - 10);
       }
       lock (_PortfolioDescriptions) {
-        _PortfolioDescriptions.Add(urlCompatibleName, desc);
-        _PortfolioDescriptionTags.Add(urlCompatibleName, tags);
+        _PortfolioDescriptions.Add(portfolioName, desc);
+        _PortfolioDescriptionTags.Add(portfolioName, tags);
       }
     }
 
@@ -81,24 +81,30 @@ namespace UShell {
       }
     }
 
-    public PortfolioDescription GetPortfolioDescription(string nameInUrl) {
-      if (nameInUrl.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
-        nameInUrl = nameInUrl.Substring(0, nameInUrl.Length - 5);
+    /// <summary> </summary>
+    /// <param name="portfolioName">Only the technical name (URL-SAFE!) of a portfolio. NOT a full name like 'foo.portfolio.json'.</param>
+    /// <returns></returns>
+    public PortfolioDescription GetPortfolioDescription(string portfolioName) {
+      if (portfolioName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
+        portfolioName = portfolioName.Substring(0, portfolioName.Length - 5);
       }
       lock (_PortfolioDescriptions) {
-        if(_PortfolioDescriptions.TryGetValue(nameInUrl, out PortfolioDescription found)) {
+        if(_PortfolioDescriptions.TryGetValue(portfolioName, out PortfolioDescription found)) {
           return found;
         }
         return null;
       }
     }
 
-    public ModuleDescription GetModuleDescription(string nameInUrl) {
-      if (nameInUrl.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
-        nameInUrl = nameInUrl.Substring(0, nameInUrl.Length - 5);
+    /// <summary> </summary>
+    /// <param name="moduleScopingKey">An technical name (URL-SAFE!) to discriminate application modules from each other.</param>
+    /// <returns></returns>
+    public ModuleDescription GetModuleDescription(string moduleScopingKey) {
+      if (moduleScopingKey.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase)) {
+        moduleScopingKey = moduleScopingKey.Substring(0, moduleScopingKey.Length - 5);
       }
       lock (_ModuleDescriptions) {
-        if (_ModuleDescriptions.TryGetValue(nameInUrl, out ModuleDescription found)) {
+        if (_ModuleDescriptions.TryGetValue(moduleScopingKey, out ModuleDescription found)) {
           return found;
         }
         return null;

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection.Emit;
 using System.Security.Cryptography;
 
 namespace UShell {
 
+  [DebuggerDisplay("{ModuleTitle} [{ModuleScopingKey}]")]
   public class ModuleDescription {
 
     public string ModuleUid { get; set; }= null;
