@@ -47,6 +47,35 @@ namespace UShell.Tests {
     }
 
     [TestMethod]
+    public void LoadAggregatedModuleDescription_HandlesHttpErrorAndInvalidJson() {
+      string url1 = "http://test/module1.json";
+      string url2 = "http://test/module2.json";
+      string url3 = "http://test/module3.json";
+
+      ModuleDescription mod1 = new ModuleDescription {
+        Workspaces = new List<WorkspaceDescription> { new WorkspaceDescription { WorkspaceKey = "ws1", WorkspaceTitle = "WS1" } }
+      };
+
+      Dictionary<string, string> responses = new()
+      {
+        { url1, SerializeModule(mod1) },
+        { url2, "INVALID_JSON" }
+        // url3 is missing to simulate 404
+      };
+
+      UShell.PortfolioExtensions.HttpClientFactory = () => new HttpClient(new MockHttpMessageHandler(responses));
+
+      PortfolioDescription portfolio = new PortfolioDescription {
+        ApplicationTitle = "Partial",
+        ModuleDescriptionUrls = new[] { url1, url2, url3 }
+      };
+
+      ModuleDescription aggregated = portfolio.LoadAggregatedModuleDescription();
+
+      Assert.AreEqual(1, aggregated.Workspaces.Count);
+    }
+
+    [TestMethod]
     public void LoadAggregatedModuleDescription_MergesAllCollections() {
       // Arrange
       string url1 = "http://test/module1.json";
@@ -77,27 +106,35 @@ namespace UShell.Tests {
         { url2, SerializeModule(mod2) }
       };
 
-      // Use the mock handler for all HTTP requests in PortfolioExtensions
-      UShell.PortfolioExtensions.HttpClientFactory = () => new HttpClient(new MockHttpMessageHandler(responses));
+      Func<HttpClient> bkp = UShell.PortfolioExtensions.HttpClientFactory;
+      try {
 
-      PortfolioDescription portfolio = new PortfolioDescription {
-        ApplicationTitle = "Test Portfolio",
-        ModuleDescriptionUrls = new[] { url1, url2 }
-      };
+        // Use the mock handler for all HTTP requests in PortfolioExtensions
+        UShell.PortfolioExtensions.HttpClientFactory = () => new HttpClient(new MockHttpMessageHandler(responses));
+    
+        PortfolioDescription portfolio = new PortfolioDescription {
+          ApplicationTitle = "Test Portfolio",
+          ModuleDescriptionUrls = new[] { url1, url2 }
+        };
 
-      // Act
-      ModuleDescription aggregated = portfolio.LoadAggregatedModuleDescription();
+        // Act
+        ModuleDescription aggregated = portfolio.LoadAggregatedModuleDescription();
 
-      // Assert
-      Assert.AreEqual("Test Portfolio", aggregated.ModuleTitle);
-      Assert.AreEqual("test-portfolio", aggregated.ModuleUid);
-      Assert.AreEqual(2, aggregated.Workspaces.Count);
-      Assert.AreEqual(2, aggregated.Usecases.Count);
-      Assert.AreEqual(2, aggregated.StaticUsecaseAssignments.Count);
-      Assert.AreEqual(2, aggregated.Datasources.Count);
-      Assert.AreEqual(2, aggregated.Services.Count);
-      Assert.AreEqual(2, aggregated.Datastores.Count);
-      Assert.AreEqual(2, aggregated.Commands.Count);
+        // Assert
+        Assert.AreEqual("Test Portfolio", aggregated.ModuleTitle);
+        Assert.AreEqual("test-portfolio", aggregated.ModuleUid);
+        Assert.AreEqual(2, aggregated.Workspaces.Count);
+        Assert.AreEqual(2, aggregated.Usecases.Count);
+        Assert.AreEqual(2, aggregated.StaticUsecaseAssignments.Count);
+        Assert.AreEqual(2, aggregated.Datasources.Count);
+        Assert.AreEqual(2, aggregated.Services.Count);
+        Assert.AreEqual(2, aggregated.Datastores.Count);
+        Assert.AreEqual(2, aggregated.Commands.Count);
+
+      }
+      finally {
+        UShell.PortfolioExtensions.HttpClientFactory = bkp;
+      }
     }
 
     [TestMethod]
@@ -126,33 +163,5 @@ namespace UShell.Tests {
       Assert.ThrowsException<ArgumentNullException>(() => PortfolioExtensions.LoadAggregatedModuleDescription(null));
     }
 
-    [TestMethod]
-    public void LoadAggregatedModuleDescription_HandlesHttpErrorAndInvalidJson() {
-      string url1 = "http://test/module1.json";
-      string url2 = "http://test/module2.json";
-      string url3 = "http://test/module3.json";
-
-      ModuleDescription mod1 = new ModuleDescription {
-        Workspaces = new List<WorkspaceDescription> { new WorkspaceDescription { WorkspaceKey = "ws1", WorkspaceTitle = "WS1" } }
-      };
-
-      Dictionary<string, string> responses = new()
-      {
-        { url1, SerializeModule(mod1) },
-        { url2, "INVALID_JSON" }
-        // url3 is missing to simulate 404
-      };
-
-      UShell.PortfolioExtensions.HttpClientFactory = () => new HttpClient(new MockHttpMessageHandler(responses));
-
-      PortfolioDescription portfolio = new PortfolioDescription {
-        ApplicationTitle = "Partial",
-        ModuleDescriptionUrls = new[] { url1, url2, url3 }
-      };
-
-      ModuleDescription aggregated = portfolio.LoadAggregatedModuleDescription();
-
-      Assert.AreEqual(1, aggregated.Workspaces.Count);
-    }
   }
 }
