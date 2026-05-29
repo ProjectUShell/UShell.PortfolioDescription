@@ -1,13 +1,13 @@
 {
-  "currentVersion": "4.0.2",
-  "currentVersionWithSuffix": "4.0.2",
+  "currentVersion": "4.1.0",
+  "currentVersionWithSuffix": "4.1.0",
   "releaseType": "",
-  "previousVersion": "4.0.1",
-  "changeGrade": "fix",
+  "previousVersion": "4.0.2",
+  "changeGrade": "minor",
   "currentMajor": 4,
-  "currentMinor": 0,
-  "currentPatch": 2,
-  "versionDateInfo": "2026-03-06",
-  "versionTimeInfo": "14:33:22",
-  "versionNotes": "- Small name adjustments to some parameters\n"
+  "currentMinor": 1,
+  "currentPatch": 0,
+  "versionDateInfo": "2026-05-29",
+  "versionTimeInfo": "05:39:58",
+  "versionNotes": "- new Feature: Moved targets from .net 6/8 to 8/10\n"
 }
