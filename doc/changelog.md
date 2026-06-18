@@ -8,7 +8,19 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* **new Feature**: Moved targets from .net 6/8 to 8/10
+*(none)*
+
+
+
+## v 4.1.1
+released **2026-06-09**, including:
+ - New revision without significant changes
+
+
+
+## v 4.1.0
+released **2026-05-29**, including:
+ - **new Feature**: Moved targets from .net 6/8 to 8/10
 
 
 
