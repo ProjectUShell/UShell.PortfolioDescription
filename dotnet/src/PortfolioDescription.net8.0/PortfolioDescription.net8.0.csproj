@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -13,10 +13,10 @@
     <Product>UShell.PortfolioDescription</Product>
     <Company>(public domain)</Company>
     <Copyright>SmartStandards</Copyright>
-    <Version>4.1.1</Version>
-    <AssemblyVersion>4.1.1</AssemblyVersion>
+    <Version>4.1.2</Version>
+    <AssemblyVersion>4.1.2</AssemblyVersion>
     <Authors>SmartStandards</Authors>
-    <FileVersion>4.1.1</FileVersion>
+    <FileVersion>4.1.2</FileVersion>
     <PackageTags></PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>

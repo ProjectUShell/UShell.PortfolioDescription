@@ -12,6 +12,13 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 4.1.2
+released **2026-06-18**, including:
+ - Merge branch 'master' of https://github.com/ProjectUShell/UShell.PortfolioDescription
+ - debugability
+
+
+
 ## v 4.1.1
 released **2026-06-09**, including:
  - New revision without significant changes
