@@ -49,4 +49,24 @@
     <ProjectReference Include="..\PortfolioDescription.net10.0\PortfolioDescription.net10.0.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SmartStandards.Logging.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SmartStandards.Logging.cs</LastGenOutput>
+      <CustomToolNamespace>UShellPortfolioHosting</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SmartStandards.Logging.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SmartStandards.Logging.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

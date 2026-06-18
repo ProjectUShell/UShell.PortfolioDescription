@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Logging.SmartStandards.CopyForUShellPortfolioHosting;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,6 +26,12 @@ namespace UShell {
     public ActionResult<PortfolioDescription> GetPortfolio([FromRoute] string portfolioName) {
       try {
         PortfolioDescription defaultPortfolio = _PortfolioService.GetPortfolioDescription(portfolioName);
+
+        if(defaultPortfolio == null) {
+          DevLogger.LogError($"{_PortfolioService.GetType().Name} could not find a portfolio named '{portfolioName}'");
+          return this.NotFound($"No portfolio named '{portfolioName}' found.");
+        }
+
         return this.Ok(defaultPortfolio);
       }
       catch (Exception ex) {
@@ -38,6 +45,12 @@ namespace UShell {
     public ActionResult<ModuleDescription> GetModule([FromRoute] string moduleScopingKey) {
       try {
         ModuleDescription moduleDesc = _PortfolioService.GetModuleDescription(moduleScopingKey);
+
+        if (moduleDesc == null) {
+          DevLogger.LogError($"{_PortfolioService.GetType().Name} could not find a module.json under '{moduleScopingKey}'");
+          return this.NotFound($"No module named '{moduleScopingKey}' found.");
+        }
+
         return this.Ok(moduleDesc);
       }
       catch (Exception ex) {
