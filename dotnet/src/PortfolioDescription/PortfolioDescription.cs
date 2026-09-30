@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace UShell {
 
@@ -80,6 +83,20 @@ namespace UShell {
       var instance = new PortfolioDescription { ApplicationTitle  = applicationTitle };
       if(customizingMethod != null) customizingMethod.Invoke(instance);
       return instance;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static PortfolioDescription FromEmbeddedResFile(string fileNameWithNamespace, Assembly assembly = null) {
+      if(assembly == null) assembly = Assembly.GetCallingAssembly();
+      using (Stream stream = assembly.GetManifestResourceStream(fileNameWithNamespace)) {
+        if (stream == null) {
+          throw new Exception($"Embedded resource '{fileNameWithNamespace}' not found.");
+        }
+        using (StreamReader reader = new StreamReader(stream)) {
+          string rawJson = reader.ReadToEnd();
+          return Newtonsoft.Json.JsonConvert.DeserializeObject<PortfolioDescription>(rawJson);
+        }
+      }
     }
 
   }
