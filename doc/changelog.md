@@ -12,6 +12,12 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 4.1.3
+released **2026-09-30**, including:
+ - Packgae-Updates and Convenicnece-Method 'FromEmbeddedResFile'
+
+
+
 ## v 4.1.2
 released **2026-06-18**, including:
  - Merge branch 'master' of https://github.com/ProjectUShell/UShell.PortfolioDescription
