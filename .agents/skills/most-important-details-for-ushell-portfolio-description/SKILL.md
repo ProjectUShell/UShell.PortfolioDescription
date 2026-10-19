@@ -11,9 +11,10 @@ UShell.PortfolioDescription is the central contract/model repository for declara
 
 ## Mandatory related knowledge
 
-- Always read this compact skill first for repository-specific orientation.
-- For global U-Shell desired-state architecture, read `UShell.ReactFrontend/.agents/skills/ushell/SKILL.md` when available locally.
-- The architecture skill is leading for desired-state U-Shell concepts; this repository is leading for productive .NET/JS description contract shape.
+- Always read this compact skill first for repository-specific orientation. It covers implementation details only.
+- The U-Shell target state lives in the root skills of **UShell.Docs** and must always be loaded as well: `ushell-architecture` (mandatory root entry) and `ushell-declarative-model` (target state of everything described in this contract), plus the domain skills the task touches (`ushell-interaction-dynamics`, `ushell-data-auth-scope`, `ushell-server-commands`, `ushell-host-api`). Location: sibling checkout `../UShell.Docs/.agents/skills/<name>/SKILL.md`, otherwise https://github.com/ProjectUShell/UShell.Docs/tree/master/.agents/skills
+- The UShell.Docs skills are leading for desired-state U-Shell concepts; this repository is leading for the productive .NET/JS description contract shape. Design knowledge discovered here goes into the UShell.Docs skills.
+- Contract changes are additive only (new optional properties, new command types, new `mapDynamic` channels) and are made in .NET and JS/TS together. Reference backlog IDs (`UB-xx` from `UShell.Docs/doc/backlog.md`) in commits.
 
 ## Code structure
 
@@ -37,6 +38,7 @@ Primary local U-Shell repositories and clone URLs:
 
 | Repository | Role | Clone URL |
 | --- | --- | --- |
+| `UShell.Docs` | Top-down entry: leading U-Shell target state as Agent Skills (`.agents/skills`), cross-repository backlog (`doc/backlog.md`). | `https://github.com/ProjectUShell/UShell.Docs.git` |
 | `UShell.PortfolioDescription` | Productive description contracts for portfolios, modules, workspaces, use cases, commands, ApplicationScope, dynamic mappings, and hosting helpers. | `https://github.com/ProjectUShell/UShell.PortfolioDescription.git` |
 | `UShell.ReactFrontend` | Productive leading React runtime for portfolio loading, workspace/use-case runtime, mapDynamic, federation, menu, scope, and authentication integration. | `https://github.com/ProjectUShell/UShell.ReactFrontend.git` |
 | `UShell.ModuleBase.JS` | JavaScript/TypeScript module integration contracts, widget contracts, WidgetHost contracts, datasource/datastore abstractions, and runtime concepts. | `https://github.com/ProjectUShell/UShell.ModuleBase.JS.git` |
