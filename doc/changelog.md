@@ -12,6 +12,13 @@ This files contains a version history including all changes relevant for semanti
 
 
 
+## v 4.1.4
+released **2026-11-06**, including:
+ - Bumped AuthTokenHandling to 6.x
+ - Point entry skill to UShell.Docs root skills
+
+
+
 ## v 4.1.3
 released **2026-09-30**, including:
  - Packgae-Updates and Convenicnece-Method 'FromEmbeddedResFile'
